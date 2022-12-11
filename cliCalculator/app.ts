@@ -14,7 +14,7 @@ let questions = [
         message: "Enter the first number",
         validate: (num1:any) => {
             if (isNaN(num1) || num1 === "") {
-                console.log(chalk.redBright("\nError : Not a valid number. Please provide a valid argument."));
+                console.log(chalk.redBright("\nError : Not a valid number. Please provide a valid number."));
                 
             }
             else {
