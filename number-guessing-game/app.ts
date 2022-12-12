@@ -12,7 +12,7 @@ console.log(figlet.textSync("Number Guessing Game",
 
 let ranNum = Math.floor(Math.random() * 11);
 
-console.log(ranNum);
+// console.log(ranNum);
 
 let q1 = [{
     name: "numQues",
