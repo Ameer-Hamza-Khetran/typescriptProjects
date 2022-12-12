@@ -1,13 +1,14 @@
 import figlet from "figlet";
 import inquirer from "inquirer";
 import chalk from "chalk";
+import chalkAnimation, { neon, rainbow } from "chalk-animation";
 
 
-console.log(figlet.textSync("Number Guessing Game", 
+let welcomeMessage = (figlet.textSync("Number Guessing Game", 
 {
     font: "Big",
-}))
-
+}));
+console.log(chalk.blueBright(welcomeMessage));
 
 
 let ranNum = Math.floor(Math.random() * 11);
@@ -36,7 +37,15 @@ inquirer.prompt(q1)
         console.log(`Computer Number : ${ranNum}`);
     }
     else {
-        console.log("Your number matches with the computer number");
+        let winMessage = figlet.textSync("Congrats ! You Win", 
+        {
+            font: "Big",
+        });
+        chalkAnimation.neon(winMessage);
+        
+        setTimeout(() => {
+            console.log("");
+        }, 5000);
     }
 })
 
