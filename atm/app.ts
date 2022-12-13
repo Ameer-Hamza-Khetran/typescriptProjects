@@ -58,4 +58,22 @@ inquirer.prompt(questions)
 
 .then((answers) => {
     console.log("Atm functionalities unlocked");
+    return;
 })
+.then(() => {
+    let atmQuestions = [
+        {
+            name: "selectFunctionality",
+            type: "list",
+            message: "Please select atm functionality you would like to avail",
+            choices: ["Available Balance", "Cash Withdrawl", "Funds Transfer"]
+        }
+    ]
+    
+    inquirer.prompt(atmQuestions)
+    
+    .then(() => {
+        console.log("Soory its not you ! ATM is out of cash. GoodBye!");
+    })
+})
+
