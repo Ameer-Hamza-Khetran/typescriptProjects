@@ -1,4 +1,6 @@
 import inquirer from "inquirer";
+import { createSpinner } from 'nanospinner';
+import chalk from "chalk";
 
 let set = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
@@ -19,7 +21,7 @@ let questions = [
         message: "Enter the User Id given above",
         validate: (value:string) => {
             if (value !== userId) {
-                console.log("\nIncorrect User Id. Please enter again correctly");
+                console.log(chalk.redBright("\n>>> Incorrect User Id. Please enter again correctly"));
                 return false;
             }
             return true;
@@ -37,17 +39,17 @@ let questions = [
                         return true;
                     }
                     else {
-                        console.log("\nIncorrect Pin. Please enter again correctly");
+                        console.log(chalk.redBright("\n>>> Incorrect Pin. Please enter again correctly"));
                         return false;
                     }
                 }
                 else {
-                    console.log("\nIncorrect Pin. Please enter again correctly");
+                    console.log(chalk.redBright("\n>>> Incorrect Pin. Please enter again correctly"));
                     return false;
                 }
             }
             else {
-                console.log("\nIncorrect Pin. Please enter again correctly");
+                console.log(chalk.redBright("\n>>> Incorrect Pin. Please enter again correctly"));
                 return false;
             }
         }
@@ -57,23 +59,35 @@ let questions = [
 inquirer.prompt(questions)
 
 .then((answers) => {
-    console.log("Atm functionalities unlocked");
-    return;
+    function spinners() {
+        const spinner = createSpinner();
+        let verifyText = chalk.yellowBright("Verifying .... Please wait")
+        spinner.start({ text: verifyText, color: 'red' });
+        setTimeout(() => {
+            let atmText = chalk.greenBright("Atm functionalities unlocked")
+            spinner.success({ text: atmText});
+            spinner.clear();  
+        }, 3000);
+    }
+    spinners();
 })
-.then(() => {
+.then((value) => {
+    
     let atmQuestions = [
         {
             name: "selectFunctionality",
             type: "list",
-            message: "Please select atm functionality you would like to avail",
+            message: "Please select atm functionality you would like to use",
             choices: ["Available Balance", "Cash Withdrawl", "Funds Transfer"]
         }
     ]
-    
-    inquirer.prompt(atmQuestions)
+
+    setTimeout(() => {
+        inquirer.prompt(atmQuestions)
     
     .then(() => {
-        console.log("Soory its not you ! ATM is out of cash. GoodBye!");
+        console.log(chalk.redBright(" >>> Soory its not you ! ATM is out of cash. GoodBye!"));
     })
+    }, 3000);
 })
 
