@@ -19,6 +19,12 @@ let questions = [
         name: "Task Description",
         type: "input",
         message: "Enter task description",
+    },
+    {
+        name: "Priority",
+        type: "list",
+        message: "Select priority for this task",
+        choices: ["Normal", "Urgent"]
     }
 ]
 
