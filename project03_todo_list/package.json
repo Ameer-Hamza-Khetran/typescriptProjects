@@ -5,7 +5,7 @@
     "inquirer": "^9.1.4",
     "typescript": "^4.9.4"
   },
-  "name": "project04_currency_converter",
+  "name": "project03_todo_list",
   "type": "module",
   "version": "1.0.0",
   "main": "index.js",
