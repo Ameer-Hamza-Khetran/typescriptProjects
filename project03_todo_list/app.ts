@@ -1,7 +1,7 @@
 import inquirer from "inquirer";
 import chalk from "chalk";
-type taskType = [{}];
-let tasks: taskType = [{}];
+type taskType = {}[];
+let tasks: taskType = [];
 let questions = [
     {
         name: "Task Name",
